@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ 'INICIO' | translate}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<!-- Navbar -->
+<app-navbar></app-navbar>
+<!-- Navbar -->
+    <div class="background"></div>
+    <div class="container mt-xl-5">
+                <h2 class="text-center pt-5">{{ 'USUARIOS_REGISTRADOS' | translate}}</h2>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">{{ 'PLACEHOLDER_NOMBRE' | translate}}</th>
+                        <th scope="col">{{ 'PLACEHOLDER_CORREO' | translate}}</th>
+                        <th scope="col">{{ 'ROL' | translate}}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let usuario of usuarios">
+                        <th scope="row">{{usuario.id}}</th>
+                        <td>{{usuario.nombre}}</td>
+                        <td>{{usuario.correo}}</td>
+                        <td>{{usuario.role}}</td>
+                      </tr>                   
+                    </tbody>
+                  </table>
+            </div>
+            
+</body>
+</html>

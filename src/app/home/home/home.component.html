@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/assets/css/carousel.css" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link href="/assets/css/dropdowns.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <app-navbar></app-navbar>
+    <!-- Navbar -->
+    <div id="carouselExampleDark" class="carousel carousel-dark slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+
+
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img src="assets/img/Banner.png" class="d-block w-50 mx-auto" alt="centrar">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+                <h5 class="text-center">Productos de repostería elaborados con la más alta calidad, dedicación y sabor
+                    casero
+                </h5>
+            </div>
+
+            <div class="carousel-item" data-bs-interval="10000">
+                <img src="assets/img/NUESTROS SERVICIOS.jpg" class="d-block w-50 mx-auto" alt="centrar">
+                <div class="carousel-caption d-none d-md-block">
+                    <a routerLink="/tienda" class="btn btn-outline-primary" role="button">Ver
+                        Tienda</a>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </div>
+    <div class="container mb-5">
+        <div class="dropdown-menu d-block position-static p-2 mx-auto shadow rounded-3 w-340px" data-bs-theme="dark">
+            <h2 class="mb-3 text-center">Calendario</h2>
+            <div class="row justify-content-center">
+                <div class="cal">
+                    <div class="cal-month">
+                        <button class="btn cal-btn " type="button">
+                            <svg class="bi" width="16" height="16">
+                                <use xlink:href="#arrow-left-short" />
+                            </svg>
+                        </button>
+                        <strong class="cal-month-name">Enero</strong>
+                        <select class="form-select cal-month-name d-none">
+                            <option selected value="February">Enero</option>
+                            <option selected value="February">Febrero</option>
+                            <option selected value="March">Marzo</option>
+                            <option selected value="April">Abril</option>
+                            <option selected value="May">Mayo</option>
+                            <option selected value="June">Junio</option>
+                            <option selected value="July">Julio</option>
+                            <option selected value="August">Agosto</option>
+                            <option selected value="September">Septiembre</option>
+                            <option selected value="October">Octubre</option>
+                            <option selected value="November">Noviembre</option>
+                            <option selected value="Deciembre">December</option>
+                        </select>
+                        <button class="btn cal-btn" type="button">
+                            <svg class="bi" width="16" height="16">
+                                <use xlink:href="#arrow-right-short" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="cal-weekdays text-body-secondary">
+                        <div class="col">Lun</div>
+                        <div class="col">Mar</div>
+                        <div class="col">Mie</div>
+                        <div class="col">Jue</div>
+                        <div class="col">Vie</div>
+                        <div class="col">Sab</div>
+                        <div class="col">Dom</div>
+                    </div>
+
+                    <div class="cal-days">
+                        <button class="btn cal-btn" type="button">1</button>
+                        <button class="btn cal-btn" type="button">2</button>
+                        <button class="btn cal-btn" type="button">3</button>
+                        <button class="btn cal-btn" type="button">4</button>
+                        <button class="btn cal-btn" type="button">5</button>
+                        <button class="btn cal-btn" type="button">6</button>
+                        <button class="btn cal-btn" type="button">7</button>
+
+                        <button class="btn cal-btn" type="button">8</button>
+                        <button class="btn cal-btn" type="button">9</button>
+                        <button class="btn cal-btn" type="button">10</button>
+                        <button class="btn cal-btn" type="button">11</button>
+                        <button class="btn cal-btn" type="button">12</button>
+                        <button class="btn cal-btn" type="button">13</button>
+                        <button class="btn cal-btn" type="button">14</button>
+
+                        <button class="btn cal-btn" type="button">15</button>
+                        <button class="btn cal-btn" type="button">16</button>
+                        <button class="btn cal-btn" type="button">17</button>
+                        <button class="btn cal-btn" type="button">18</button>
+                        <button class="btn cal-btn" type="button">19</button>
+                        <button class="btn cal-btn" type="button">20</button>
+                        <button class="btn cal-btn" type="button">21</button>
+
+                        <button class="btn cal-btn" type="button">22</button>
+                        <button class="btn cal-btn" type="button">23</button>
+                        <button class="btn cal-btn" type="button">24</button>
+                        <button class="btn cal-btn" type="button">25</button>
+                        <button class="btn cal-btn" type="button">26</button>
+                        <button class="btn cal-btn" type="button">27</button>
+                        <button class="btn cal-btn" type="button">28</button>
+
+                        <button class="btn cal-btn" type="button">29</button>
+                        <button class="btn cal-btn" type="button">30</button>
+                        <button class="btn cal-btn" type="button">31</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center m-5">
+        <h2 class="mt-5 text-center">Google Maps</h2>
+        <div class="row justify-content-center">
+            <google-map width="100%" [options]="options" />
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+
+</html>

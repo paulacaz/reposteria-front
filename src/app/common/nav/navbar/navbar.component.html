@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="arrow-left-short" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+            d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+    </symbol>
+
+    <symbol id="arrow-right-short" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+            d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+    </symbol>
+    <symbol id="check2" viewBox="0 0 16 16">
+        <path
+            d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+    </symbol>
+    <symbol id="cart" viewBox="0 0 16 16">
+        <path
+            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+    </symbol>
+</svg>
+
+<nav class="navbar navbar-expand-xxl navbar-light bg-light" aria-label="Seventh navbar example">
+    <div class="container-fluid">
+        <div class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleXxl"
+            aria-controls="navbarsExampleXxl" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleXxl">
+            <a class="navbar-brand text-center"><b>Pastelería & Repostería "Paito"</b></a>
+            <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/inicio">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/tienda">Tienda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">¿Quiénes somos?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Contacto</a>
+                </li>
+                <li class="nav-item" checkPermissions role="ADMIN">
+                    <a class="nav-link active" aria-current="page" routerLink="/administrador">Administrar</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto" *ngIf="!autenticado">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login">Iniciar sesión</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="dropdown text-end" *ngIf="autenticado">
+            <a class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <img src="assets/img/Banner.png" alt="mdo" width="35" height="35" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small">
+                <li><a class="dropdown-item" href="#">Mis pedidos...</a></li>
+                <li><a class="dropdown-item" href="#">Mi cuenta</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" (click)="salir()">Cerrar Sesión</a></li>
+
+            </ul>
+        </div>
+
+        <ul class="navbar-nav">
+            <li class="d-flex"><a class="nav-link" href="/carrito PR_P/index.html">
+                    <svg class="bi" width="24" height="24">
+                        <use xlink:href="#cart" />
+                    </svg>
+                </a></li>
+        </ul>
+
+        <form class="d-flex" role="buscar">
+            <input class="form-control me-2" type="buscar" placeholder="Buscar" aria-label="buscar">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+    </div>
+</nav>

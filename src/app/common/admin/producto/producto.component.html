@@ -1,0 +1,114 @@
+<div class="container mt-5">
+    <h5>{{modoEdicion ? 'Actualizar' : 'Crear'}} Producto</h5>
+    <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+        <div class="mb-1">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" id="nombre" class="form-control" formControlName="nombre">
+        </div>
+
+        <div class="mb-1">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <textarea id="descripcion" class="form-control" formControlName="descripcion"></textarea>
+        </div>
+
+        <div class="mb-1">
+            <label for="imagen" class="form-label">Imagen</label>
+            <input type="text" id="imagen" class="form-control" formControlName="imagen">
+        </div>
+
+        <div class="mb-1">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="number" id="precio" class="form-control" formControlName="precio">
+        </div>
+
+        <div class="mb-1">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" id="stock" class="form-control" formControlName="stock">
+        </div>
+
+        <div class="mb-1">
+            <label for="categoria" class="form-label">Categoría</label>
+            <select id="categoria" class="form-select" formControlName="categoria" [compareWith]="compareCategorias">
+              <option value="" disabled selected>Selecciona una categoría</option>
+              <option *ngFor="let cat of categorias" [ngValue]="cat">{{ cat.nombre }}</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="productoForm.invalid">{{modoEdicion ? 'Editar' : 'Guardar'}}</button>
+          <button type="button" class="btn btn-danger m-2" (click)="cancelarEdicion()" *ngIf="modoEdicion">Cancelar</button>
+        
+    </form>
+
+
+    <div id="producto">
+        <div class="d-flex flex-wrap justify-content-between gap-3 mt-3">
+            <div *ngFor="let producto of productoPage?.content">
+                <div class="card card-product">
+                    <div class="card-body">
+                        <!-- Etiqueta -->
+                        <div class="text-center position-relative">
+                            <div class="position-absolute top-0 start-0">
+                                <span class="badge bg-dark">{{producto.nombre}}</span>
+                            </div>
+                            <a href="..">
+                                <!-- Imagen -->
+                                <img src="{{producto.imagen}}" alt="Pasteleria" class="mb-1 img-fluid img-product" />
+                            </a>
+                            <!-- Acción btn -->
+                            <div class="card-product-action">
+                                <a href="..." class="btn-action" data-bs-toggle="modal"
+                                    data-bs-target="#quickViewModal">
+                                    <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
+                                        title="Quick View"></i>
+                                </a>
+                                <a href="..." class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
+                                    title="Lista de deseos"><i class="bi bi-heart"></i></a>
+                                <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
+                                    title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- Categoría del producto-->
+                        <div class="text-small mb-1">
+                            <a href="#!"
+                                class="text-decoration-none text-muted"><small>{{producto.categoria.nombre}}</small></a>
+                        </div>
+                        <h2 class="fs-6"><a href="..." class="text-inherit text-decoration-none">{{producto.nombre}}</a>
+                        </h2>
+                        <div>
+                            <!-- Clasificación -->
+                            <small class="text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </small>
+                        </div>
+                        <!-- Precio: English Muffins x 4 Unid (Pastelería) -->
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <div>
+                                <span class="text-dark mr-2">{{producto.precio | currency}}</span>
+                            </div>
+
+                            <button type="button" class="btn btn-primary btn-sm me-2" (click)="seleccionarProducto(producto)"> Editar
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm" (click)="eliminarProducto(producto.id)"> Eliminar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4 d-flex justify-content-center">
+            <nav>
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link clickable" (click)="paginaAnterior()">Anterior</a></li>
+                    <li class="{{pagina == paginaActual ? 'page-item active' : 'page-item'}}"
+                        *ngFor="let pagina of getPages()"><a class="page-link clickable"
+                            (click)="cambiarPaginaEvento(pagina)">{{pagina}}</a></li>
+                    <li class="page-item"><a class="page-link clickable" (click)="siguientePagina()">Siguiente</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

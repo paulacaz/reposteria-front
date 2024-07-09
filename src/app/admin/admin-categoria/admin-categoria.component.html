@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h5>{{modoEdicion ? 'Actualizar' : 'Crear'}} Categoría</h5>
+  <form [formGroup]="categoriaForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input id="nombre" formControlName="nombre" class="form-control" />
+      <div *ngIf="categoriaForm.get('nombre')?.invalid && categoriaForm.get('nombre')?.touched" class="text-danger">
+        El nombre es requerido.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripción</label>
+      <textarea id="descripcion" formControlName="descripcion" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="categoriaForm.invalid">{{modoEdicion ? 'Editar' : 'Guardar'}}</button>
+    <button type="button" class="btn btn-danger m-2" (click)="cancelarEdicion()" *ngIf="modoEdicion">Cancelar</button>
+  </form>
+</div>
+
+<div class="container mt-4">
+  <h5>Lista de Categorías</h5>
+  <ul class="list-group">
+    <li *ngFor="let categoria of categorias" class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <h6>{{ categoria.nombre }}</h6>
+        <p>{{ categoria.descripcion }}</p>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary btn-sm me-2" (click)="seleccionarCategoria(categoria)"> Editar
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="eliminarCategoria(categoria.id)"> Eliminar
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>

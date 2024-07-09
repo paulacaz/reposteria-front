@@ -1,0 +1,8 @@
+<div class="mb-8 ">
+    <h5 class="mb-3">Categorias</h5>
+    <div class="form-check mb-2" *ngFor="let categoria of categorias">
+        <input class="form-check-input" type="checkbox" [value]="categoria.nombre" [id]="'categoria-' + categoria.id"
+            [checked]="categoria.checked" (change)="seleccionDeCategoria($event, categoria)" />
+        <label class="form-check-label" [for]="'categoria-' + categoria.id">{{ categoria.nombre }}</label>
+    </div>
+</div>

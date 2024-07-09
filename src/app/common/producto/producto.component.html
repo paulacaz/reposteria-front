@@ -1,0 +1,135 @@
+<!-- todos los -->
+<div class="card mb-2 bg-light border-0">
+    <!-- card body -->
+    <div class="card-body p-9">
+        <h5>Todos los productos</h5>
+    </div>
+</div>
+<!-- list icon -->
+<div class="d-lg-flex justify-content-between align-items-center">
+    <div class="mb-3 mb-lg-0">
+        <p class="mb-0">
+            <span class="text-dark">{{productoPage.totalElements}}</span>
+            Productos encontrados
+        </p>
+    </div>
+
+    <!-- Iconos Items -->
+    <div class="d-md-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center justify-content-between">
+            <div>
+                <a href="..." class="text-muted me-3"><i class="bi bi-list-ul"></i></a>
+                <a href="..." class="me-3 active"><i class="bi bi-grid"></i></a>
+                <a href="..." class="me-3 text-muted"><i class="bi bi-grid-3x3-gap"></i></a>
+            </div>
+            <div class="ms-2 d-lg-none">
+                <a class="btn btn-outline-gray-400 text-muted" data-bs-toggle="offcanvas" href="#offcanvasCategory"
+                    role="button" aria-controls="offcanvasCategory">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-filter me-2">
+                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3">
+                        </polygon>
+                    </svg>
+                    Filtros
+                </a>
+            </div>
+        </div>
+
+        <div class="d-flex mt-2 mt-lg-0">
+            <div class="me-2 flex-grow-1">
+                <!-- Seleccionar opción: Mostrar -->
+                <select class="form-select" [(ngModel)]="itemsPorPagina" (change)="getProductos()">
+                    <option *ngFor="let opcion of itemsPorPaginaSelect" [value]="opcion">Mostrar {{ opcion }}
+                    </option>
+                </select>
+            </div>
+            <div>
+                <!-- Seleccionar opción: Mostrar - Ordenar por -->
+                <select id="ordenarSelect" class="form-select" [(ngModel)]="seleccionOrdenamiento"
+                    (change)="getProductos()">
+                    <option *ngFor="let opcion of criteriosOrdenamiento" [value]="opcion.value">{{ opcion.desc }}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="producto">
+    <div class="d-flex flex-wrap justify-content-start gap-3 mt-3">
+        <h4 *ngIf="productoPage.totalElements == 0">No se encontraron resutados</h4>
+        <div *ngFor="let producto of productoPage?.content">
+            <div class="card card-product">
+                <div class="card-body">
+                    <!-- Etiqueta -->
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0">
+                            <span class="badge bg-dark">{{producto.nombre}}</span>
+                        </div>
+                        <a href="..">
+                            <!-- Imagen -->
+                            <img src="{{producto.imagen}}" alt="Pasteleria" class="mb-3 img-fluid img-product" />
+                        </a>
+                        <!-- Acción btn -->
+                        <div class="card-product-action">
+                            <a href="..." class="btn-action" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                <i class="bi bi-eye" data-bs-toggle="tooltip" data-bs-html="true"
+                                    title="Quick View"></i>
+                            </a>
+                            <a href="..." class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
+                                title="Lista de deseos"><i class="bi bi-heart"></i></a>
+                            <a href="#!" class="btn-action" data-bs-toggle="tooltip" data-bs-html="true"
+                                title="Compare"><i class="bi bi-arrow-left-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- Categoría del producto-->
+                    <div class="text-small mb-1">
+                        <a href="#!"
+                            class="text-decoration-none text-muted"><small>{{producto.categoria.nombre}}</small></a>
+                    </div>
+                    <h2 class="fs-6"><a href="..." class="text-inherit text-decoration-none">{{producto.nombre}}</a>
+                    </h2>
+                    <div>
+                        <!-- Clasificación -->
+                        <small class="text-warning">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                        </small>
+                    </div>
+                    <!-- Precio: English Muffins x 4 Unid (Pastelería) -->
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div>
+                            <span class="text-dark">{{producto.precio | currency}}</span>
+                        </div>
+                        <!-- btn -->
+                        <div>
+                            <a href="#!" class="btn btn-primary btn-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-plus">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                                Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 d-flex justify-content-center">
+        <nav>
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link clickable" (click)="paginaAnterior()">Anterior</a></li>
+                <li class="{{pagina == paginaActual ? 'page-item active' : 'page-item'}}"
+                    *ngFor="let pagina of getPages()"><a class="page-link clickable"
+                        (click)="cambiarPaginaEvento(pagina)">{{pagina}}</a></li>
+                <li class="page-item"><a class="page-link clickable" (click)="siguientePagina()">Siguiente</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
