@@ -1,4 +1,4 @@
 export const environment = {
 
-    host : ''
+    host : 'http://35.232.32.201:8080'
 };

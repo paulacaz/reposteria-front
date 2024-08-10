@@ -1,5 +1,5 @@
 export const environment = {
 
-    host : 'localhost:8080'
+    host : 'http://35.232.32.201:8080'
 
 };
